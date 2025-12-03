@@ -8,7 +8,7 @@ This year's solutions are implemented in **Go**.
 
 | Day | Puzzle | Part 1 | Part 2 | Solution |
 |-----|--------|--------|--------|----------|
-| 01 | [Secret Entrance](https://adventofcode.com/2025/day/1) | | | |
+| 01 | [Secret Entrance](https://adventofcode.com/2025/day/1) | ⭐ | ⭐ | [main.go](day_01/main.go) |
 | 02 | [Gift Shop](https://adventofcode.com/2025/day/2) | | | |
 | 03 | [Lobby](https://adventofcode.com/2025/day/3) | | | |
 | 04 | [Day 4](https://adventofcode.com/2025/day/4) | | | |

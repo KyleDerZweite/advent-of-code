@@ -53,7 +53,23 @@ def part2(left_list: list[int], right_list: list[int]) -> int:
     return similarity_score
 
 
+def test():
+    """Test with example data from the puzzle."""
+    example_left = [3, 4, 2, 1, 3, 3]
+    example_right = [4, 3, 5, 3, 9, 3]
+    
+    # Part 1: distances sum to 11
+    assert part1(example_left, example_right) == 11, "Part 1 failed"
+    
+    # Part 2: similarity score is 31
+    assert part2(example_left, example_right) == 31, "Part 2 failed"
+    
+    print("All tests passed!")
+
+
 if __name__ == "__main__":
+    # test()
+    
     left, right = parse_input("input.txt")
     
     result1 = part1(left, right)
