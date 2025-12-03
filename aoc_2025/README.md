@@ -7,8 +7,8 @@ My solutions for [Advent of Code 2025](https://adventofcode.com/2025).
 | Day | Puzzle | Part 1 | Part 2 | Solution |
 |-----|--------|--------|--------|----------|
 | 01 | [Secret Entrance](https://adventofcode.com/2025/day/1) | ⭐ | ⭐ | [solution.go](day_01/solution.go) |
-| 02 | [Gift Shop](https://adventofcode.com/2025/day/2) | | | |
-| 03 | [Lobby](https://adventofcode.com/2025/day/3) | | | |
+| 02 | [Gift Shop](https://adventofcode.com/2025/day/2) | ⭐ | ⭐ | [solution.go](day_02/solution.go) |
+| 03 | [Lobby](https://adventofcode.com/2025/day/3) | ⭐ | ⭐ | [solution.go](day_03/solution.go) |
 | 04 | [Day 4](https://adventofcode.com/2025/day/4) | | | |
 | 05 | [Day 5](https://adventofcode.com/2025/day/5) | | | |
 | 06 | [Day 6](https://adventofcode.com/2025/day/6) | | | |
@@ -18,6 +18,28 @@ My solutions for [Advent of Code 2025](https://adventofcode.com/2025).
 | 10 | [Day 10](https://adventofcode.com/2025/day/10) | | | |
 | 11 | [Day 11](https://adventofcode.com/2025/day/11) | | | |
 | 12 | [Day 12](https://adventofcode.com/2025/day/12) | | | |
+
+## ASCII Art
+
+```
+  '  ' . ____  . '  ' . * ' ' '  .'     <o . .         
+________/O___\__________|_________________O______   1 **
+   _______||_________    ... . '  .  '   ''.'  '.       
+   | _@__ || _o_  '.|_ _________________________    2 **
+   |_&_%__||_oo__^=_[ \|..'  _    .. .. ..     |        
+                     \_]__|_|___[]_[]_[]__//_|      3 **
+                               ____________//___        
+                               | \        // @@|    4
+                               |_[#]_@@__//_@@@|        
+                                                    5
+                                                    6
+                                                    7
+                                                    8
+                                                    9
+                                                   10
+                                                   11
+                                                   12
+```
 
 ## Running Solutions
 
