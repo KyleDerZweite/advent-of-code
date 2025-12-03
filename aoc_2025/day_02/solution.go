@@ -57,104 +57,34 @@ func part1(product_id_ranges string) int {
 }
 
 func part2(product_id_ranges string) int {
-	// Implement the logic for part 1 of the puzzle here
 	invalid_ids_sum := 0
 	ids := parse_id_ranges(product_id_ranges)
 	for _, id := range ids {
 		id_str := strconv.Itoa(id)
-		digits := strings.Split(id_str, "")
-		all_same := true
-		first_digit := digits[0]
-		for _, d := range digits {
-			if d != first_digit {
-				all_same = false
-				break
-			}
-		}
-		if all_same {
-			fmt.Printf("EVEN ID %d --- Current Invalid Sum: %d\n", id, invalid_ids_sum)
-			invalid_ids_sum += id
-			continue
-		}
+		len_digits := len(id_str)
 
-		len_digits := len(digits)
-		if len_digits%2 == 0 {
-			fmt.Printf("EVEN ID %d --- Current Invalid Sum: %d\n", id, invalid_ids_sum)
-			for i := 2; i <= len_digits; i += 2 {
-				i_negative_offset := 0
-				if len_digits%i != 0 {
-					i_negative_offset += 1
-				}
-				split_index := int(len_digits / (i - i_negative_offset))
-				fmt.Printf("  Trying to split '%d' into '%d' parts with split_index %d\n", id, i-i_negative_offset, split_index)
-				sequences := []string{}
-				for j := 0; j < len_digits; j += split_index {
-					sequences = append(sequences, id_str[len_digits-j-split_index:len_digits-j])
-				}
-				all_same := true
-				for _, seq := range sequences {
-					if seq != sequences[0] {
-						all_same = false
+		isInvalid := false
+		// Check for each possible pattern length from 1 to len_digits/2
+		for patternLen := 1; patternLen <= len_digits/2; patternLen++ {
+			if len_digits%patternLen == 0 {
+				// Check if id_str is made of the pattern repeated
+				pattern := id_str[:patternLen]
+				allMatch := true
+				for i := patternLen; i < len_digits; i += patternLen {
+					if id_str[i:i+patternLen] != pattern {
+						allMatch = false
 						break
 					}
 				}
-				if all_same {
-					invalid_ids_sum += id
+				if allMatch {
+					isInvalid = true
 					break
 				}
+			}
+		}
 
-				// fmt.Printf("ID: %d Sequences: %v\n", id, sequences)
-			}
-		} else if len_digits%3 == 0 {
-			fmt.Printf("ODD ID: %d --- Current Invalid Sum: %d\n", id, invalid_ids_sum)
-			split_index := len_digits / 3
-			sequences := []string{}
-			for j := 0; j < len_digits; j += split_index {
-				// fmt.Printf("seq_splits: [%d, %d]\n", len_digits-j-split_index, len_digits-j)
-				sequences = append(sequences, id_str[len_digits-j-split_index:len_digits-j])
-			}
-			// fmt.Printf("ID: %d Sequences: %v\n", id, sequences)
-			all_same := true
-			for _, seq := range sequences {
-				if seq != sequences[0] {
-					// fmt.Printf("  Not all same: %v\n", sequences)
-					// invalid_ids_sum += id
-					all_same = false
-					break
-				}
-				// fmt.Printf("  All same: %v\n", sequences)
-			}
-			if all_same {
-				fmt.Printf("  All same: %v\n", sequences)
-				invalid_ids_sum += id
-			} else {
-				fmt.Printf("  Not all same: %v\n", sequences)
-			}
-		} else {
-			fmt.Printf("ODD ID: %d --- Current Invalid Sum: %d\n", id, invalid_ids_sum)
-			sequences := []string{}
-			for j := 0; j < len_digits; j += 1 {
-				// fmt.Printf("seq_splits: [%d, %d]\n", len_digits-j-1, len_digits-j)
-				sequences = append(sequences, id_str[len_digits-j-1:len_digits-j])
-			}
-			// fmt.Printf("ID: %d Sequences: %v\n", id, sequences)
-			all_same := true
-			for _, seq := range sequences {
-				if seq != sequences[0] {
-					// fmt.Printf("  Not all same: %v\n", sequences)
-					// invalid_ids_sum += id
-					all_same = false
-					break
-				}
-				// fmt.Printf("  All same: %v\n", sequences)
-			}
-			if all_same {
-				fmt.Printf("  All same: %v\n", sequences)
-				invalid_ids_sum += id
-			} else {
-				fmt.Printf("  Not all same: %v\n", sequences)
-			}
-
+		if isInvalid {
+			invalid_ids_sum += id
 		}
 	}
 	return invalid_ids_sum
@@ -186,8 +116,8 @@ func main() {
 	// Run tests
 	test()
 
-	// data := parse_input("input.txt")
+	data := parse_input("input.txt")
 
-	// fmt.Println("Part 1 - Invalid IDs Sum:", part1(data))
-	//fmt.Println("Part 2 - Password:", part2(data))
+	fmt.Println("Part 1 - Invalid IDs Sum (twice-pattern):", part1(data))
+	fmt.Println("Part 2 - Invalid IDs Sum (repeated pattern):", part2(data))
 }
