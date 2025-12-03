@@ -81,7 +81,12 @@ func part2(product_id_ranges string) int {
 		if len_digits%2 == 0 {
 			fmt.Printf("EVEN ID %d --- Current Invalid Sum: %d\n", id, invalid_ids_sum)
 			for i := 2; i <= len_digits; i += 2 {
-				split_index := len_digits / i
+				i_negative_offset := 0
+				if len_digits%i != 0 {
+					i_negative_offset += 1
+				}
+				split_index := int(len_digits / (i - i_negative_offset))
+				fmt.Printf("  Trying to split '%d' into '%d' parts with split_index %d\n", id, i-i_negative_offset, split_index)
 				sequences := []string{}
 				for j := 0; j < len_digits; j += split_index {
 					sequences = append(sequences, id_str[len_digits-j-split_index:len_digits-j])
@@ -99,6 +104,31 @@ func part2(product_id_ranges string) int {
 				}
 
 				// fmt.Printf("ID: %d Sequences: %v\n", id, sequences)
+			}
+		} else if len_digits%3 == 0 {
+			fmt.Printf("ODD ID: %d --- Current Invalid Sum: %d\n", id, invalid_ids_sum)
+			split_index := len_digits / 3
+			sequences := []string{}
+			for j := 0; j < len_digits; j += split_index {
+				// fmt.Printf("seq_splits: [%d, %d]\n", len_digits-j-split_index, len_digits-j)
+				sequences = append(sequences, id_str[len_digits-j-split_index:len_digits-j])
+			}
+			// fmt.Printf("ID: %d Sequences: %v\n", id, sequences)
+			all_same := true
+			for _, seq := range sequences {
+				if seq != sequences[0] {
+					// fmt.Printf("  Not all same: %v\n", sequences)
+					// invalid_ids_sum += id
+					all_same = false
+					break
+				}
+				// fmt.Printf("  All same: %v\n", sequences)
+			}
+			if all_same {
+				fmt.Printf("  All same: %v\n", sequences)
+				invalid_ids_sum += id
+			} else {
+				fmt.Printf("  Not all same: %v\n", sequences)
 			}
 		} else {
 			fmt.Printf("ODD ID: %d --- Current Invalid Sum: %d\n", id, invalid_ids_sum)
@@ -138,14 +168,13 @@ func test() {
 	excpeted_part2 := 4174379265
 
 	result_part1 := part1(example_product_id_ranges)
-	result_part2 := part2(example_product_id_ranges)
-
 	if result_part1 != excpeted_part1 {
 		fmt.Printf("Part 1 failed: got %d, expected %d\n", result_part1, excpeted_part1)
 	} else {
 		fmt.Println("Part 1 passed")
 	}
 
+	result_part2 := part2(example_product_id_ranges)
 	if result_part2 != excpeted_part2 {
 		fmt.Printf("Part 2 failed: got %d, expected %d, difference %d\n", result_part2, excpeted_part2, excpeted_part2-result_part2)
 	} else {
