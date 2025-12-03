@@ -1,4 +1,4 @@
-# Advent of Code — Personal Solutions
+# 🎄 Advent of Code
 
 Minimal, personal repository for Advent of Code solutions.
 

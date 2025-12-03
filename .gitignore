@@ -1,0 +1,21 @@
+# Advent of Code inputs are personalized and shouldn't be shared
+**/input.txt
+
+# Puzzle descriptions are copyrighted by Advent of Code
+**/*.md
+!README.md
+!**/README.md
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
