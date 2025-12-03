@@ -59,25 +59,31 @@ func part1(joltages []string) int {
 
 func part2(joltages []string) int {
 	joltage_sum := 0
+	battery_digits := 12
 
 	for _, joltage := range joltages {
 		len_joltage := len(joltage)
+		joltage_index := 0 // Current position to start searching from
 
-		battery_digits := 12
-		joltage_index := 0
-		for i := 0; i < 12; i++ {
+		for i := 0; i < battery_digits; i++ {
+			digits_remaining := battery_digits - i - 1  // How many more digits we need after this one
+			max_index := len_joltage - digits_remaining // We can only search up to this index (exclusive bound for valid picks)
+
 			joltage_max := 0
-			joltage_factor := math.Pow(float64(10), float64(battery_digits-1-i))
+			joltage_max_pos := joltage_index
 
-			for j := joltage_index + 1; j < len_joltage-1; j++ {
+			// Search from current position up to max_index (inclusive)
+			for j := joltage_index; j < max_index; j++ {
 				joltage_digit := int(joltage[j] - '0')
 				if joltage_digit > joltage_max {
 					joltage_max = joltage_digit
-					joltage_index = j
+					joltage_max_pos = j
 				}
 			}
-			fmt.Printf("Joltage max: %d at index %d with factor %d\n", joltage_max, joltage_index, int(joltage_factor))
-			joltage_sum += (joltage_max * int(joltage_factor))
+
+			joltage_factor := int(math.Pow(float64(10), float64(battery_digits-1-i)))
+			joltage_sum += joltage_max * joltage_factor
+			joltage_index = joltage_max_pos + 1 // Next search starts after the picked digit
 		}
 	}
 	return joltage_sum
@@ -113,8 +119,8 @@ func main() {
 	// Run tests
 	test()
 
-	// data := parse_input("input.txt")
+	data := parse_input("input.txt")
 
-	// fmt.Println("Part 1 - Max Joltage Sum (2):", part1(data))
-	// fmt.Println("Part 2 - Max Joltage Sum (12):", part2(data))
+	fmt.Println("Part 1 - Max Joltage Sum (2):", part1(data))
+	fmt.Println("Part 2 - Max Joltage Sum (12):", part2(data))
 }
