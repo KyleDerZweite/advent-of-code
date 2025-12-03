@@ -1,12 +1,12 @@
 # 🎄 Advent of Code
 
-My solutions for [Advent of Code](https://adventofcode.com/) — an annual coding challenge with daily puzzles from December 1st to 25th.
+My solutions for [Advent of Code](https://adventofcode.com/) - an annual coding challenge with daily puzzles from December 1st to 25th.
 
 ## Years
 
 | Year | Language | Stars | Status |
 |------|----------|-------|--------|
-| [2025](aoc_2025/) | Go | 0/24 | 🔄 In Progress |
+| [2025](aoc_2025/) | Go | 3/50 | 🔄 In Progress |
 | [2024](aoc_2024/) | Python | 2/50 | 🔄 In Progress |
 
 ## Repository Structure

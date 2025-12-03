@@ -1,12 +1,13 @@
 package main
+
 import (
 	"fmt"
-	"strconv"
 	"os"
+	"strconv"
 	"strings"
 )
 
-func parse_input(input string) (string) {
+func parse_input(input string) string {
 	// Parse the input string into rotation instructions
 	data, err := os.ReadFile(input)
 	if err != nil {
@@ -39,12 +40,12 @@ func part1(product_id_ranges string) int {
 		digits := strings.Split(id_str, "")
 
 		len_digits := len(digits)
-		if len_digits % 2 != 0 {
+		if len_digits%2 != 0 {
 			// skip odd-length IDs
 			continue
 		}
-		sequence_0 := id_str[0:len_digits/2]
-		sequence_1 := id_str[len_digits/2:len_digits]
+		sequence_0 := id_str[0 : len_digits/2]
+		sequence_1 := id_str[len_digits/2 : len_digits]
 
 		// fmt.Printf("ID: %d Seq0: %s Seq1: %s\n", id, sequence_0, sequence_1)
 		if sequence_0 == sequence_1 {
@@ -62,9 +63,8 @@ func part2(product_id_ranges string) int {
 	for _, id := range ids {
 		id_str := strconv.Itoa(id)
 		digits := strings.Split(id_str, "")
-		
-		first_digit := digits[0]
 		all_same := true
+		first_digit := digits[0]
 		for _, d := range digits {
 			if d != first_digit {
 				all_same = false
@@ -72,46 +72,58 @@ func part2(product_id_ranges string) int {
 			}
 		}
 		if all_same {
+			fmt.Printf("EVEN ID %d --- Current Invalid Sum: %d\n", id, invalid_ids_sum)
 			invalid_ids_sum += id
 			continue
 		}
-		
+
 		len_digits := len(digits)
-		if len_digits % 2 == 0 {
-			for i:=len_digits; i < len_digits; i += 2 {
-				fmt.Printf("Digitis: %s Len: %d I: %d\n", id_str, len_digits, i)
-
+		if len_digits%2 == 0 {
+			fmt.Printf("EVEN ID %d --- Current Invalid Sum: %d\n", id, invalid_ids_sum)
+			for i := 2; i <= len_digits; i += 2 {
+				split_index := len_digits / i
 				sequences := []string{}
+				for j := 0; j < len_digits; j += split_index {
+					sequences = append(sequences, id_str[len_digits-j-split_index:len_digits-j])
+				}
+				all_same := true
+				for _, seq := range sequences {
+					if seq != sequences[0] {
+						all_same = false
+						break
+					}
+				}
+				if all_same {
+					invalid_ids_sum += id
+					break
+				}
 
-
-
-
-
+				// fmt.Printf("ID: %d Sequences: %v\n", id, sequences)
 			}
-			
-
-			sequence_0 := id_str[0:len_digits/2]
-			sequence_1 := id_str[len_digits/2:len_digits]
-
-			// fmt.Printf("ID: %d Seq0: %s Seq1: %s\n", id, sequence_0, sequence_1)
-			if sequence_0 == sequence_1 {
-				invalid_ids_sum += id
-				continue
-			}
-			
-			//split_index := len_digits / 4
-
-			//sequence_0 := id_str[0:split_index]
-			//sequence_1 := id_str[split_index:split_index*2]
-			//sequence_2 := id_str[split_index*2:split_index*3]
-			//sequence_3 := id_str[split_index*3:len_digits]
 		} else {
-			for i:=len_digits; i > 0; i -= 2 {
-				fmt.Printf("Digitis: %s Len: %d I: %d\n", id_str, len_digits, i)
+			fmt.Printf("ODD ID: %d --- Current Invalid Sum: %d\n", id, invalid_ids_sum)
+			sequences := []string{}
+			for j := 0; j < len_digits; j += 1 {
+				// fmt.Printf("seq_splits: [%d, %d]\n", len_digits-j-1, len_digits-j)
+				sequences = append(sequences, id_str[len_digits-j-1:len_digits-j])
 			}
-
-
-
+			// fmt.Printf("ID: %d Sequences: %v\n", id, sequences)
+			all_same := true
+			for _, seq := range sequences {
+				if seq != sequences[0] {
+					// fmt.Printf("  Not all same: %v\n", sequences)
+					// invalid_ids_sum += id
+					all_same = false
+					break
+				}
+				// fmt.Printf("  All same: %v\n", sequences)
+			}
+			if all_same {
+				fmt.Printf("  All same: %v\n", sequences)
+				invalid_ids_sum += id
+			} else {
+				fmt.Printf("  Not all same: %v\n", sequences)
+			}
 
 		}
 	}
@@ -124,7 +136,7 @@ func test() {
 
 	excpeted_part1 := 1227775554
 	excpeted_part2 := 4174379265
-	
+
 	result_part1 := part1(example_product_id_ranges)
 	result_part2 := part2(example_product_id_ranges)
 
@@ -135,7 +147,7 @@ func test() {
 	}
 
 	if result_part2 != excpeted_part2 {
-		fmt.Printf("Part 2 failed: got %d, expected %d\n", result_part2, excpeted_part2)
+		fmt.Printf("Part 2 failed: got %d, expected %d, difference %d\n", result_part2, excpeted_part2, excpeted_part2-result_part2)
 	} else {
 		fmt.Println("Part 2 passed")
 	}
@@ -146,7 +158,7 @@ func main() {
 	test()
 
 	// data := parse_input("input.txt")
-	
+
 	// fmt.Println("Part 1 - Invalid IDs Sum:", part1(data))
 	//fmt.Println("Part 2 - Password:", part2(data))
 }

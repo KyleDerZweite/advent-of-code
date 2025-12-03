@@ -1,12 +1,13 @@
 package main
+
 import (
 	"fmt"
-	"strconv"
 	"os"
+	"strconv"
 	"strings"
 )
 
-func parse_input(input string) ([]string) {
+func parse_input(input string) []string {
 	// Parse the input string into rotation instructions
 	data, err := os.ReadFile(input)
 	if err != nil {
@@ -27,10 +28,10 @@ func part1(start int, rotation []string) int {
 		steps, _ := strconv.Atoi(move[1:])
 
 		if direction == 'L' {
-			dial = ((dial - steps) % 100 + 100) % 100
+			dial = ((dial-steps)%100 + 100) % 100
 		} else if direction == 'R' {
 			dial = (dial + steps) % 100
-		} 
+		}
 
 		if dial == 0 {
 			password += 1
@@ -58,9 +59,9 @@ func part2(start int, rotation []string) int {
 				distTo0 = 100 // if at 0, next 0 is 100 steps away going left
 			}
 			if steps >= distTo0 {
-				password += 1 + (steps - distTo0) / 100
+				password += 1 + (steps-distTo0)/100
 			}
-			dial = ((dial - steps) % 100 + 100) % 100
+			dial = ((dial-steps)%100 + 100) % 100
 		} else if direction == 'R' {
 			// Going right: we hit 0 at step=(100-dial), (200-dial), etc.
 			// So we hit 0 if steps >= (100-dial) (when dial > 0), or steps >= 100 (when dial == 0)
@@ -69,7 +70,7 @@ func part2(start int, rotation []string) int {
 				distTo0 = 100 // if at 0, next 0 is 100 steps away going right
 			}
 			if steps >= distTo0 {
-				password += 1 + (steps - distTo0) / 100
+				password += 1 + (steps-distTo0)/100
 			}
 			dial = (dial + steps) % 100
 		}
@@ -82,11 +83,11 @@ func part2(start int, rotation []string) int {
 func test() {
 	// Test with example data from the puzzle
 	example_start := 50
-	example_rotation := []string{"L68","L30","R48","L5","R60","L55","L1","L99","R14","L82"}
+	example_rotation := []string{"L68", "L30", "R48", "L5", "R60", "L55", "L1", "L99", "R14", "L82"}
 
 	excpeted_part1 := 3
 	excpeted_part2 := 6
-	
+
 	result_part1 := part1(example_start, example_rotation)
 	result_part2 := part2(example_start, example_rotation)
 
@@ -110,7 +111,7 @@ func main() {
 	// The dial starts by pointing at 50.
 	start := 50
 	rotation := parse_input("input.txt")
-	
+
 	fmt.Println("Part 1 - Password:", part1(start, rotation))
 	fmt.Println("Part 2 - Password:", part2(start, rotation))
 }
