@@ -2,8 +2,6 @@
 
 My solutions for [Advent of Code 2025](https://adventofcode.com/2025).
 
-This year's solutions are implemented in **Go**.
-
 ## Progress
 
 | Day | Puzzle | Part 1 | Part 2 | Solution |
@@ -42,8 +40,9 @@ go run ./aoc_2025/day_01
 aoc_2025/
 ├── README.md
 ├── day_01/
+│   ├── 01.md        # Puzzle description (git-ignored)
 │   ├── input.txt    # Puzzle input (git-ignored)
-│   └── main.go      # Solution
+│   └── solution.*   # Solution file
 └── ...
 ```
 
