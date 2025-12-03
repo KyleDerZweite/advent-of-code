@@ -19,3 +19,6 @@ env/
 .vscode/
 *.swp
 *.swo
+
+# AoC Fetching Script
+fetch_aoc.py

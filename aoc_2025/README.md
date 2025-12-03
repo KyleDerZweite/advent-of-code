@@ -6,7 +6,7 @@ My solutions for [Advent of Code 2025](https://adventofcode.com/2025).
 
 | Day | Puzzle | Part 1 | Part 2 | Solution |
 |-----|--------|--------|--------|----------|
-| 01 | [Secret Entrance](https://adventofcode.com/2025/day/1) | ⭐ | ⭐ | [main.go](day_01/main.go) |
+| 01 | [Secret Entrance](https://adventofcode.com/2025/day/1) | ⭐ | ⭐ | [solution.go](day_01/solution.go) |
 | 02 | [Gift Shop](https://adventofcode.com/2025/day/2) | | | |
 | 03 | [Lobby](https://adventofcode.com/2025/day/3) | | | |
 | 04 | [Day 4](https://adventofcode.com/2025/day/4) | | | |
