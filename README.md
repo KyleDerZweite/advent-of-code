@@ -1,18 +1,36 @@
 # 🎄 Advent of Code
 
-Minimal, personal repository for Advent of Code solutions.
+My solutions for [Advent of Code](https://adventofcode.com/) — an annual coding challenge with daily puzzles from December 1st to 25th.
 
-Each year's puzzles are stored in the `YYYY/` folder (e.g. `2025/`). Solutions are implemented per-day and can use different languages depending on the year.
+## Years
 
-Usage
------
-- Browse the year folder you want, then the day folder inside it.
-- For 2025 I'm using Go (see `2025/README.md` for runnable instructions).
+| Year | Language | Stars | Status |
+|------|----------|-------|--------|
+| [2025](aoc_2025/) | Go | 0/24 | 🔄 In Progress |
+| [2024](aoc_2024/) | Python | 2/50 | 🔄 In Progress |
 
-Contributing
-------------
-This is a personal workspace — feel free to browse, learn, and open suggestions via PR, but no formal contribution process is required.
+## Repository Structure
 
-License
--------
-Files in this repo are available under an MIT-style license. See `LICENSE`.
+```
+advent-of-code/
+├── aoc_2024/          # Python solutions
+├── aoc_2025/          # Go solutions
+└── README.md
+```
+
+Each year folder contains its own README with detailed progress and instructions.
+
+## About Advent of Code
+
+> *Advent of Code is an Advent calendar of small programming puzzles for a variety of skill sets and skill levels that can be solved in any programming language you like.*
+> — [Eric Wastl](https://twitter.com/ericwastl), creator of AoC
+
+## Legal
+
+- Puzzle descriptions are © Advent of Code and are not included in this repository
+- Solutions are my own work (with AI-assisted documentation)
+- Input files are personalized and git-ignored
+
+## License
+
+Solutions are available under the MIT License. See [LICENSE](LICENSE).
