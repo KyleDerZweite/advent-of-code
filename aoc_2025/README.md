@@ -9,7 +9,7 @@ My solutions for [Advent of Code 2025](https://adventofcode.com/2025).
 | 01 | [Secret Entrance](https://adventofcode.com/2025/day/1) | ⭐ | ⭐ | [solution.go](day_01/solution.go) |
 | 02 | [Gift Shop](https://adventofcode.com/2025/day/2) | ⭐ | ⭐ | [solution.go](day_02/solution.go) |
 | 03 | [Lobby](https://adventofcode.com/2025/day/3) | ⭐ | ⭐ | [solution.go](day_03/solution.go) |
-| 04 | [Printing Department](https://adventofcode.com/2025/day/4) | | | [solution.go](day_04/solution.go) |
+| 04 | [Printing Department](https://adventofcode.com/2025/day/4) | ⭐ | ⭐ | [solution.go](day_04/solution.go) |
 | 05 | [Day 5](https://adventofcode.com/2025/day/5) | | | |
 | 06 | [Day 6](https://adventofcode.com/2025/day/6) | | | |
 | 07 | [Day 7](https://adventofcode.com/2025/day/7) | | | |
@@ -29,7 +29,7 @@ ________/O___\__________|_________________O______   1 **
    |_&_%__||_oo__^=_[ \|..'  _    .. .. ..     |        
                      \_]__|_|___[]_[]_[]__//_|      3 **
                                ____________//___        
-                               | \        // @@|    4
+                               | \        // @@|    4 **
                                |_[#]_@@__//_@@@|        
                                                     5
                                                     6
