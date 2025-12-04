@@ -31,3 +31,11 @@ env/
 **/*.dll
 **/*.so
 **/*.dylib
+
+# C# / .NET
+**/obj/
+*.user
+*.userosscache
+*.suo
+*.nupkg
+*.snupkg

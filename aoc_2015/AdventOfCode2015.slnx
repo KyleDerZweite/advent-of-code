@@ -1,0 +1,77 @@
+<Solution>
+  <Folder Name="/day_01/">
+    <Project Path="day_01/day_01.csproj" />
+  </Folder>
+  <Folder Name="/day_02/">
+    <Project Path="day_02/day_02.csproj" />
+  </Folder>
+  <Folder Name="/day_03/">
+    <Project Path="day_03/day_03.csproj" />
+  </Folder>
+  <Folder Name="/day_04/">
+    <Project Path="day_04/day_04.csproj" />
+  </Folder>
+  <Folder Name="/day_05/">
+    <Project Path="day_05/day_05.csproj" />
+  </Folder>
+  <Folder Name="/day_06/">
+    <Project Path="day_06/day_06.csproj" />
+  </Folder>
+  <Folder Name="/day_07/">
+    <Project Path="day_07/day_07.csproj" />
+  </Folder>
+  <Folder Name="/day_08/">
+    <Project Path="day_08/day_08.csproj" />
+  </Folder>
+  <Folder Name="/day_09/">
+    <Project Path="day_09/day_09.csproj" />
+  </Folder>
+  <Folder Name="/day_10/">
+    <Project Path="day_10/day_10.csproj" />
+  </Folder>
+  <Folder Name="/day_11/">
+    <Project Path="day_11/day_11.csproj" />
+  </Folder>
+  <Folder Name="/day_12/">
+    <Project Path="day_12/day_12.csproj" />
+  </Folder>
+  <Folder Name="/day_13/">
+    <Project Path="day_13/day_13.csproj" />
+  </Folder>
+  <Folder Name="/day_14/">
+    <Project Path="day_14/day_14.csproj" />
+  </Folder>
+  <Folder Name="/day_15/">
+    <Project Path="day_15/day_15.csproj" />
+  </Folder>
+  <Folder Name="/day_16/">
+    <Project Path="day_16/day_16.csproj" />
+  </Folder>
+  <Folder Name="/day_17/">
+    <Project Path="day_17/day_17.csproj" />
+  </Folder>
+  <Folder Name="/day_18/">
+    <Project Path="day_18/day_18.csproj" />
+  </Folder>
+  <Folder Name="/day_19/">
+    <Project Path="day_19/day_19.csproj" />
+  </Folder>
+  <Folder Name="/day_20/">
+    <Project Path="day_20/day_20.csproj" />
+  </Folder>
+  <Folder Name="/day_21/">
+    <Project Path="day_21/day_21.csproj" />
+  </Folder>
+  <Folder Name="/day_22/">
+    <Project Path="day_22/day_22.csproj" />
+  </Folder>
+  <Folder Name="/day_23/">
+    <Project Path="day_23/day_23.csproj" />
+  </Folder>
+  <Folder Name="/day_24/">
+    <Project Path="day_24/day_24.csproj" />
+  </Folder>
+  <Folder Name="/day_25/">
+    <Project Path="day_25/day_25.csproj" />
+  </Folder>
+</Solution>

@@ -9,11 +9,13 @@ My solutions for [Advent of Code](https://adventofcode.com/) - an annual coding 
 | [2025](aoc_2025/) | Go | 6/50 | 🔄 In Progress |
 | [2024](aoc_2024/) | Python | 2/50 | 🔄 In Progress |
 | [2023](aoc_2023/) | Rust | 0/50 | 🔄 In Progress |
+| [2015](aoc_2015/) | C# | 0/50 | 🔄 In Progress |
 
 ## Repository Structure
 
 ```
 advent-of-code/
+├── aoc_2015/          # C# solutions
 ├── aoc_2023/          # Rust solutions
 ├── aoc_2024/          # Python solutions
 ├── aoc_2025/          # Go solutions
