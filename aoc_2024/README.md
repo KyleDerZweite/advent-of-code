@@ -9,7 +9,7 @@ My solutions for [Advent of Code 2024](https://adventofcode.com/2024).
 | 01 | [Historian Hysteria](https://adventofcode.com/2024/day/1) | ⭐ | ⭐ | [solution.py](day_01/solution.py) |
 | 02 | [Red-Nosed Reports](https://adventofcode.com/2024/day/2) | ⭐ | ⭐ | [solution.py](day_02/solution.py) |
 | 03 | [Mull It Over](https://adventofcode.com/2024/day/3) | ⭐ | ⭐ | [solution.py](day_03/solution.py) |
-| 04 | [Ceres Search](https://adventofcode.com/2024/day/4) | | | [solution.py](day_04/solution.py) |
+| 04 | [Ceres Search](https://adventofcode.com/2024/day/4) | ⭐ | ⭐ | [solution.py](day_04/solution.py) |
 | 05 | [Print Queue](https://adventofcode.com/2024/day/5) | | | [solution.py](day_05/solution.py) |
 | 06 | [Guard Gallivant](https://adventofcode.com/2024/day/6) | | | [solution.py](day_06/solution.py) |
 | 07 | [Bridge Repair](https://adventofcode.com/2024/day/7) | | | [solution.py](day_07/solution.py) |
