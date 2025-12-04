@@ -56,27 +56,20 @@ def part2(data: str) -> int:
     rows = len(data_strings)
     cols = len(data_strings[0]) if rows > 0 else 0
 
-    # Check for diagonal overlaps of MAS MAS or SAM SAM (with A in the middle) [TOP Left to BOTTOM Right and BOTTOM Left to TOP Right]
-    for r in range(rows - 3):
-        for c in range(cols - 3):
+    # Check for X-MAS pattern in each 3x3 window
+    # Both diagonals must spell MAS or SAM (independently)
+    for r in range(rows - 2):
+        for c in range(cols - 2):
+            # Diagonal from top-left to bottom-right
             diag1 = data_strings[r][c] + data_strings[r+1][c+1] + data_strings[r+2][c+2]
-            diag2 = data_strings[r+1][c+2] + data_strings[r+2][c+1] + data_strings[r][c]
+            # Diagonal from top-right to bottom-left
+            diag2 = data_strings[r][c+2] + data_strings[r+1][c+1] + data_strings[r+2][c]
 
-            print(diag1, diag2)
-
-            if (diag1 == search_pattern1 and  diag2 == search_pattern1) or (diag1 == search_pattern2 and diag2 == search_pattern2):
+            # Both diagonals must be MAS or SAM (each can be either)
+            if (diag1 == search_pattern1 or diag1 == search_pattern2) and \
+               (diag2 == search_pattern1 or diag2 == search_pattern2):
                 occurences += 1
-    
-    # Check for diagonal overlaps of MAS MAS or SAM SAM (with A in the middle) [BOTTOM Left to TOP Right and BOTTOM Right to TOP Left]
-    for r in range(2, rows -1):
-        for c in range(2, cols - 1):
-            diag1 = data_strings[r][c] + data_strings[r-1][c-1] + data_strings[r-2][c-2]
-            diag2 = data_strings[r][c-2] + data_strings[r-1][c-1] + data_strings[r-2][c]
 
-            print(diag1, diag2)
-
-            if (diag1 == search_pattern1 and  diag2 == search_pattern1) or (diag1 == search_pattern2 and diag2 == search_pattern2):
-                occurences += 1
     return occurences
 
 
