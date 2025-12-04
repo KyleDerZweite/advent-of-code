@@ -6,8 +6,8 @@ My solutions for [Advent of Code](https://adventofcode.com/) - an annual coding 
 
 | Year | Language | Stars | Status |
 |------|----------|-------|--------|
-| [2025](aoc_2025/) | Go | 6/50 | 🔄 In Progress |
-| [2024](aoc_2024/) | Python | 2/50 | 🔄 In Progress |
+| [2025](aoc_2025/) | Go | 8/50 | 🔄 In Progress |
+| [2024](aoc_2024/) | Python | 6/50 | 🔄 In Progress |
 | [2023](aoc_2023/) | Rust | 0/50 | 🔄 In Progress |
 | [2022](aoc_2022/) | Zig | 0/50 | 🆕 Not Started |
 | [2021](aoc_2021/) | Elixir | 0/50 | 🆕 Not Started |
