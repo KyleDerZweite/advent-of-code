@@ -16,16 +16,24 @@ def part1(data: str) -> int:
     search_pattern1 = "XMAS"
     search_pattern2 = "SAMX"
     occurences = 0
-    # Checks for left & right overlaps
-    for i in range(len(data) - 3):
-        if data[i:i+4] == search_pattern1 or data[i:i+4] == search_pattern2:
-            occurences += 1
-    # Checks for up & down overlaps
     data_strings = data.split("\n")
-    for n in range(len(data_strings)):
-        for m in range(len(data_strings[n]) - 3):
-            if data_strings[n][m:m+4] == search_pattern1 or data_strings[n][m:m+4] == search_pattern2:
+    rows = len(data_strings)
+    cols = len(data_strings[0]) if rows > 0 else 0
+    
+    # Checks for horizontal (left & right) overlaps
+    for r in range(rows):
+        for c in range(cols - 3):
+            horizontal = data_strings[r][c:c+4]
+            if horizontal == search_pattern1 or horizontal == search_pattern2:
                 occurences += 1
+    
+    # Checks for vertical (up & down) overlaps
+    for c in range(cols):
+        for r in range(rows - 3):
+            vertical = data_strings[r][c] + data_strings[r+1][c] + data_strings[r+2][c] + data_strings[r+3][c]
+            if vertical == search_pattern1 or vertical == search_pattern2:
+                occurences += 1
+    
     # Checks for diagonal overlaps
     rows = len(data_strings)
     cols = len(data_strings[0])
@@ -37,8 +45,6 @@ def part1(data: str) -> int:
                 occurences += 1
             if diag2 == search_pattern1 or diag2 == search_pattern2:
                 occurences += 1
-
-    print("Occurrences of XMAS or SAMX:", occurences)
     return occurences
 
 
