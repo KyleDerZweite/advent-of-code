@@ -1,79 +1,73 @@
 """
-Advent of Code 2024 - Day 05: Historian Hysteria
+Advent of Code 2024 - Day 05: Print Queue
 https://adventofcode.com/2024/day/5
 """
 
-from collections import Counter
 
-
-def parse_input(filename: str) -> tuple[list[int], list[int]]:
-    """Parse input file into two separate lists."""
-    left_list = []
-    right_list = []
-    
+def parse_input(filename: str) -> str:
     with open(filename, 'r') as f:
-        for line in f:
-            if line.strip():
-                left, right = line.split()
-                left_list.append(int(left))
-                right_list.append(int(right))
+        data = f.read()
     
-    return left_list, right_list
+    return data
 
 
-def part1(left_list: list[int], right_list: list[int]) -> int:
-    """
-    Calculate the total distance between two lists.
-    
-    Pairs up numbers from smallest to largest and sums the absolute differences.
-    """
-    left_sorted = sorted(left_list)
-    right_sorted = sorted(right_list)
-    
-    total_distance = 0
-    for left, right in zip(left_sorted, right_sorted):
-        total_distance += abs(left - right)
-    
-    return total_distance
+def part1(data: str) -> int:
+    # TODO: Implement solution
+    return 0
 
 
-def part2(left_list: list[int], right_list: list[int]) -> int:
-    """
-    Calculate the similarity score between two lists.
-    
-    For each number in the left list, multiply it by how many times
-    it appears in the right list, then sum all results.
-    """
-    right_counts = Counter(right_list)
-    
-    similarity_score = 0
-    for num in left_list:
-        similarity_score += num * right_counts[num]
-    
-    return similarity_score
+def part2(data: str) -> int:
+    # TODO: Implement solution
+    return 0
 
 
 def test():
     """Test with example data from the puzzle."""
-    example_left = [3, 4, 2, 1, 3, 3]
-    example_right = [4, 3, 5, 3, 9, 3]
+    example_data = """47|53
+97|13
+97|61
+97|47
+75|29
+61|13
+75|53
+29|13
+97|29
+53|29
+61|53
+97|53
+61|29
+47|13
+75|47
+97|75
+47|61
+75|61
+47|29
+75|13
+53|13
+
+75,47,61,53,29
+97,61,53,29,13
+75,29,13
+75,97,47,61,53
+61,13,29
+97,13,75,29,47"""
+
+    # Part 1: Sum of middle page numbers from correctly-ordered updates is 143
+    assert part1(example_data) == 143, "Part 1 failed"
     
-    # Part 1: distances sum to 11
-    assert part1(example_left, example_right) == 11, "Part 1 failed"
-    
-    # Part 2: similarity score is 31
-    assert part2(example_left, example_right) == 31, "Part 2 failed"
+    # Part 2: TODO
+    # assert part2(example_data) == X, "Part 2 failed"
     
     print("All tests passed!")
 
 
 if __name__ == "__main__":
-    # test()
+    test()
     
-    left, right = parse_input("input.txt")
+    data = parse_input("input.txt")
+
+    result1 = part1(data)
+    print(f"Part 1: {result1}")
     
-    result1 = part1(left, right)
-    print(f"Part 1 - Total distance: {result1}")
-    
-    result2 = part2(left, right)
-    print(f"Part 2 - Similarity score: {result2}")
+    result2 = part2(data)
+    print(f"Part 2: {result2}")
