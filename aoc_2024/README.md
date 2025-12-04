@@ -49,7 +49,7 @@ aoc_2024/
 ├── day_01/
 │   ├── 01.md        # Puzzle description (git-ignored)
 │   ├── input.txt    # Puzzle input (git-ignored)
-│   └── solution.*   # Solution file
+│   └── solution.py   # Solution file
 └── ...
 ```
 
