@@ -19,3 +19,15 @@ env/
 .vscode/
 *.swp
 *.swo
+
+# Rust
+**/target/
+**/*.rs.bk
+
+# Go
+**/bin/
+**/*.exe
+**/*.exe~
+**/*.dll
+**/*.so
+**/*.dylib

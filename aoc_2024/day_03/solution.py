@@ -1,6 +1,6 @@
 """
-Advent of Code 2024 - Day 01: Historian Hysteria
-https://adventofcode.com/2024/day/1
+Advent of Code 2024 - Day 03: Historian Hysteria
+https://adventofcode.com/2024/day/3
 """
 
 from collections import Counter
