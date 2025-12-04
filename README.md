@@ -25,11 +25,20 @@ Each year folder contains its own README with detailed progress and instructions
 > *Advent of Code is an Advent calendar of small programming puzzles for a variety of skill sets and skill levels that can be solved in any programming language you like.*
 > — [Eric Wastl](https://twitter.com/ericwastl), creator of AoC
 
+## Tooling
+
+This repository includes [`fetch_aoc.py`](fetch_aoc.py), a helper script to fetch puzzle descriptions for personal use.
+
+> ⚠️ **Important**: This tool is for **personal use only** to help organize your own solutions.
+> Please be respectful of [adventofcode.com](https://adventofcode.com) servers.
+> Puzzle content is © Advent of Code / Eric Wastl and is git-ignored.
+
 ## Legal
 
-- Puzzle descriptions are © Advent of Code and are not included in this repository
+- Puzzle descriptions are © [Advent of Code](https://adventofcode.com/about) / Eric Wastl and are not included in this repository
 - Solutions are my own work (with AI-assisted documentation)
 - Input files are personalized and git-ignored
+- Please consider [supporting Advent of Code](https://adventofcode.com/support) if you enjoy it!
 
 ## License
 

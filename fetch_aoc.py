@@ -9,6 +9,19 @@ Usage:
     python fetch_aoc.py --years 2015-2025
     python fetch_aoc.py --years 2024,2025 --days 1-10
     python fetch_aoc.py --years 2023 --force --delay 3
+
+⚠️  IMPORTANT DISCLAIMER:
+    This script is intended for PERSONAL USE ONLY to help organize your own
+    Advent of Code solutions. Please be respectful of adventofcode.com servers.
+    
+    Advent of Code is a labor of love by Eric Wastl. If you enjoy it, please:
+    - Don't hammer the servers with excessive requests
+    - Consider supporting AoC: https://adventofcode.com/support
+    - Read the about page: https://adventofcode.com/about
+    
+    Puzzle content is © Advent of Code / Eric Wastl and is NOT included in
+    version control. This script only fetches publicly available Part 1
+    descriptions for personal reference.
 """
 
 import argparse
@@ -31,10 +44,45 @@ except ImportError as e:
 
 # Configuration
 AOC_BASE_URL = "https://adventofcode.com"
+AOC_ABOUT_URL = "https://adventofcode.com/about"
+AOC_SUPPORT_URL = "https://adventofcode.com/support"
 USER_AGENT = "Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/109.0"
 FIRST_AOC_YEAR = 2015
 MAX_RETRIES = 3
 BACKOFF_FACTOR = 2
+CONFIRM_THRESHOLD_DAYS = 5  # Require confirmation when fetching more than this many days
+
+
+def show_disclaimer_and_confirm(total_fetches: int, years: list[int], days: list[int]) -> bool:
+    """
+    Show disclaimer and request user confirmation for bulk fetches.
+    Returns True if user confirms, False otherwise.
+    """
+    disclaimer = f"""
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                           ⚠️  IMPORTANT NOTICE ⚠️                              ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║  Advent of Code is created and maintained by Eric Wastl as a labor of love.  ║
+║  Please be respectful of the servers and don't abuse this tool.              ║
+║                                                                              ║
+║  • This script is for PERSONAL USE to organize your own AoC solutions        ║
+║  • Puzzle content is © Advent of Code and should not be redistributed        ║
+║  • Consider supporting AoC: {AOC_SUPPORT_URL:<43}      ║
+║  • Learn more: {AOC_ABOUT_URL:<55}       ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+📊 You are about to fetch up to {total_fetches} puzzle descriptions.
+   Years: {min(years)}-{max(years)} ({len(years)} years)
+   Days:  {min(days)}-{max(days)} ({len(days)} days per year)
+"""
+    print(disclaimer)
+    
+    try:
+        response = input("Do you accept these terms and wish to continue? [y/N]: ").strip().lower()
+        return response in ('y', 'yes')
+    except (KeyboardInterrupt, EOFError):
+        print("\nAborted.")
+        return False
 
 
 def parse_range(range_str: str) -> list[int]:
@@ -263,6 +311,11 @@ Examples:
         action="store_true",
         help="Show what would be fetched without writing files",
     )
+    parser.add_argument(
+        "-y", "--yes",
+        action="store_true",
+        help="Skip confirmation prompt (use responsibly)",
+    )
 
     args = parser.parse_args()
 
@@ -285,6 +338,20 @@ Examples:
 
     # Get repo root (where this script is located)
     repo_root = Path(__file__).parent.resolve()
+
+    # Calculate total potential fetches and show confirmation if needed
+    total_potential_fetches = len(years) * len(days)
+    needs_confirmation = (
+        not args.yes 
+        and not args.dry_run 
+        and (len(days) > CONFIRM_THRESHOLD_DAYS or len(years) > 1)
+    )
+    
+    if needs_confirmation:
+        if not show_disclaimer_and_confirm(total_potential_fetches, years, days):
+            print("\n❌ Operation cancelled.")
+            sys.exit(0)
+        print()  # Add spacing after confirmation
 
     # Stats
     stats = {"fetched": 0, "skipped": 0, "failed": 0, "created_dirs": 0}
