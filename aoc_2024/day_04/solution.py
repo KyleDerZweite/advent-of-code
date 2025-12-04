@@ -49,8 +49,35 @@ def part1(data: str) -> int:
 
 
 def part2(data: str) -> int:
-    # TODO: Implement solution
-    return 0
+    search_pattern1 = "MAS"
+    search_pattern2 = "SAM"
+    occurences = 0
+    data_strings = data.split("\n")
+    rows = len(data_strings)
+    cols = len(data_strings[0]) if rows > 0 else 0
+
+    # Check for diagonal overlaps of MAS MAS or SAM SAM (with A in the middle) [TOP Left to BOTTOM Right and BOTTOM Left to TOP Right]
+    for r in range(rows - 3):
+        for c in range(cols - 3):
+            diag1 = data_strings[r][c] + data_strings[r+1][c+1] + data_strings[r+2][c+2]
+            diag2 = data_strings[r+1][c+2] + data_strings[r+2][c+1] + data_strings[r][c]
+
+            print(diag1, diag2)
+
+            if (diag1 == search_pattern1 and  diag2 == search_pattern1) or (diag1 == search_pattern2 and diag2 == search_pattern2):
+                occurences += 1
+    
+    # Check for diagonal overlaps of MAS MAS or SAM SAM (with A in the middle) [BOTTOM Left to TOP Right and BOTTOM Right to TOP Left]
+    for r in range(2, rows -1):
+        for c in range(2, cols - 1):
+            diag1 = data_strings[r][c] + data_strings[r-1][c-1] + data_strings[r-2][c-2]
+            diag2 = data_strings[r][c-2] + data_strings[r-1][c-1] + data_strings[r-2][c]
+
+            print(diag1, diag2)
+
+            if (diag1 == search_pattern1 and  diag2 == search_pattern1) or (diag1 == search_pattern2 and diag2 == search_pattern2):
+                occurences += 1
+    return occurences
 
 
 def test():
@@ -69,8 +96,8 @@ MXMXAXMASX"""
     # Part 1: XMAS appears 18 times
     assert part1(example_data) == 18, "Part 1 failed"
     
-    # Part 2: TODO
-    # assert part2(example_data) == X, "Part 2 failed"
+    # Part 2: X-MAS appears 9 times
+    assert part2(example_data) == 9, "Part 2 failed"
     
     print("All tests passed!")
 
