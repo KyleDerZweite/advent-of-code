@@ -9,27 +9,27 @@ My solutions for [Advent of Code](https://adventofcode.com/) - an annual coding 
 | [2025](aoc_2025/) | Go | 6/50 | 🔄 In Progress |
 | [2024](aoc_2024/) | Python | 2/50 | 🔄 In Progress |
 | [2023](aoc_2023/) | Rust | 0/50 | 🔄 In Progress |
-| [2022](aoc_2022/) | Swift | 0/50 | 🆕 Not Started |
-| [2021](aoc_2021/) | Scala | 0/50 | 🆕 Not Started |
-| [2020](aoc_2020/) | Ruby | 0/50 | 🆕 Not Started |
-| [2019](aoc_2019/) | Kotlin | 0/50 | 🆕 Not Started |
-| [2018](aoc_2018/) | C++ | 0/50 | 🆕 Not Started |
-| [2017](aoc_2017/) | TypeScript | 0/50 | 🆕 Not Started |
-| [2016](aoc_2016/) | Java | 0/50 | 🆕 Not Started |
-| [2015](aoc_2015/) | C# | 0/50 | 🔄 In Progress |
+| [2022](aoc_2022/) | Zig | 0/50 | 🆕 Not Started |
+| [2021](aoc_2021/) | Elixir | 0/50 | 🆕 Not Started |
+| [2020](aoc_2020/) | Haskell | 0/50 | 🆕 Not Started |
+| [2019](aoc_2019/) | Dart | 0/50 | 🆕 Not Started |
+| [2018](aoc_2018/) | OCaml | 0/50 | 🆕 Not Started |
+| [2017](aoc_2017/) | Gleam | 0/50 | 🆕 Not Started |
+| [2016](aoc_2016/) | Kotlin | 0/50 | 🆕 Not Started |
+| [2015](aoc_2015/) | Julia | 0/50 | 🆕 Not Started |
 
 ## Repository Structure
 
 ```
 advent-of-code/
-├── aoc_2015/          # C# solutions
-├── aoc_2016/          # Java solutions
-├── aoc_2017/          # TypeScript solutions
-├── aoc_2018/          # C++ solutions
-├── aoc_2019/          # Kotlin solutions
-├── aoc_2020/          # Ruby solutions
-├── aoc_2021/          # Scala solutions
-├── aoc_2022/          # Swift solutions
+├── aoc_2015/          # Julia solutions
+├── aoc_2016/          # Kotlin solutions
+├── aoc_2017/          # Gleam solutions
+├── aoc_2018/          # OCaml solutions
+├── aoc_2019/          # Dart solutions
+├── aoc_2020/          # Haskell solutions
+├── aoc_2021/          # Elixir solutions
+├── aoc_2022/          # Zig solutions
 ├── aoc_2023/          # Rust solutions
 ├── aoc_2024/          # Python solutions
 ├── aoc_2025/          # Go solutions

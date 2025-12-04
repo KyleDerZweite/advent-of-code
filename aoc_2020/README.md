@@ -38,7 +38,9 @@ Each day's solution is in its own folder (`day_XX/`). To run a solution:
 
 ```bash
 cd day_01
-# Run with appropriate command for the language
+runhaskell solution.hs
+# Or compile and run:
+ghc -o solution solution.hs && ./solution
 ```
 
 ## Structure
@@ -49,7 +51,7 @@ aoc_2020/
 ├── day_01/
 │   ├── 01.md        # Puzzle description (git-ignored)
 │   ├── input.txt    # Puzzle input (git-ignored)
-│   └── solution.*   # Solution file
+│   └── solution.hs  # Solution file
 └── ...
 ```
 

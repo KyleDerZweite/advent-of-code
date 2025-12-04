@@ -38,7 +38,9 @@ Each day's solution is in its own folder (`day_XX/`). To run a solution:
 
 ```bash
 cd day_01
-# Run with appropriate command for the language
+kotlinc solution.kt -include-runtime -d solution.jar && java -jar solution.jar
+# Or with Kotlin script:
+kotlin solution.main.kts
 ```
 
 ## Structure
@@ -49,7 +51,7 @@ aoc_2016/
 ├── day_01/
 │   ├── 01.md        # Puzzle description (git-ignored)
 │   ├── input.txt    # Puzzle input (git-ignored)
-│   └── solution.*   # Solution file
+│   └── solution.kt  # Solution file
 └── ...
 ```
 
