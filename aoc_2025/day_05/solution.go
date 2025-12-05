@@ -37,36 +37,41 @@ func parse_input(input string) string {
 // 	return fresh_ids_set, available_ingredient_ids_set
 // }
 
-func parse_string(input string) (map[int]int, []int) {
-	// Is shit because takes ages!
-	fresh_id_ranges := map[int]int{}
-	ingredient_ids := []int{}
+type Range struct {
+	start int64
+	end   int64
+}
+
+func parse_string(input string) ([]Range, []int64) {
+	fresh_id_ranges := []Range{}
+	ingredient_ids := []int64{}
 
 	fresh_id_lines := strings.Split(strings.TrimSpace(strings.Split(input, "\n\n")[0]), "\n")
 	ingredient_id_lines := strings.Split(strings.TrimSpace(strings.Split(input, "\n\n")[1]), "\n")
 
 	for _, line := range fresh_id_lines {
-		fresh_ingredient_id_start, _ := strconv.Atoi(strings.Split(line, "-")[0])
-		fresh_ingredient_id_end, _ := strconv.Atoi(strings.Split(line, "-")[1])
-		fresh_id_ranges[fresh_ingredient_id_start] = fresh_ingredient_id_end
+		parts := strings.Split(strings.TrimSpace(line), "-")
+		fresh_ingredient_id_start, _ := strconv.ParseInt(parts[0], 10, 64)
+		fresh_ingredient_id_end, _ := strconv.ParseInt(parts[1], 10, 64)
+		fresh_id_ranges = append(fresh_id_ranges, Range{start: fresh_ingredient_id_start, end: fresh_ingredient_id_end})
 	}
 
 	for _, line := range ingredient_id_lines {
-		ingredient_id, _ := strconv.Atoi(strings.TrimSpace(line))
+		ingredient_id, _ := strconv.ParseInt(strings.TrimSpace(line), 10, 64)
 		ingredient_ids = append(ingredient_ids, ingredient_id)
 	}
 	return fresh_id_ranges, ingredient_ids
 }
 
-func check_id_between_range(check_id int, range_start int, range_end int) bool {
+func check_id_between_range(check_id int64, range_start int64, range_end int64) bool {
 	return check_id >= range_start && check_id <= range_end
 }
 
-func part1(fresh_id_ranges map[int]int, ingredient_ids []int) int {
+func part1(fresh_id_ranges []Range, ingredient_ids []int64) int {
 	fresh_id_count := 0
 	for _, ingredient_id := range ingredient_ids {
-		for range_start, range_end := range fresh_id_ranges {
-			if check_id_between_range(ingredient_id, range_start, range_end) {
+		for _, r := range fresh_id_ranges {
+			if check_id_between_range(ingredient_id, r.start, r.end) {
 				fresh_id_count++
 				break
 			}
@@ -75,8 +80,39 @@ func part1(fresh_id_ranges map[int]int, ingredient_ids []int) int {
 	return fresh_id_count
 }
 
-func part2(fresh_id_ranges map[int]int, ingredient_ids []int) int {
-	return 0
+func part2(fresh_id_ranges []Range, ingredient_ids []int64) int64 {
+	_ = ingredient_ids // Unused in part 2
+
+	unique_fresh_id_ranges := []Range{}
+	for _, r := range fresh_id_ranges {
+		new_range := r
+		non_overlapping := []Range{}
+
+		for _, ur := range unique_fresh_id_ranges {
+			if !(new_range.end < ur.start || new_range.start > ur.end) {
+				// Overlap found, merge into new_range
+				if ur.start < new_range.start {
+					new_range.start = ur.start
+				}
+				if ur.end > new_range.end {
+					new_range.end = ur.end
+				}
+				// Don't add ur to non_overlapping (it's merged)
+			} else {
+				// No overlap, keep this range
+				non_overlapping = append(non_overlapping, ur)
+			}
+		}
+		// Add the merged range
+		non_overlapping = append(non_overlapping, new_range)
+		unique_fresh_id_ranges = non_overlapping
+	}
+
+	var unique_fresh_id_count int64 = 0
+	for _, r := range unique_fresh_id_ranges {
+		unique_fresh_id_count += r.end - r.start + 1
+	}
+	return unique_fresh_id_count
 }
 
 func test() {
@@ -96,7 +132,7 @@ func test() {
 	fresh_id_ranges, ingredient_ids := parse_string(example_input_str)
 
 	excpeted_part1 := 3
-	excpeted_part2 := 0
+	var excpeted_part2 int64 = 14
 
 	result_part1 := part1(fresh_id_ranges, ingredient_ids)
 	if result_part1 != excpeted_part1 {
@@ -120,5 +156,5 @@ func main() {
 	data := parse_input("input.txt")
 	fresh_id_ranges, ingredient_ids := parse_string(data)
 	fmt.Println("Part 1 - Fresh ID Count:", part1(fresh_id_ranges, ingredient_ids))
-	fmt.Println("Part 2 - Max Joltage Sum (12):", part2(fresh_id_ranges, ingredient_ids))
+	fmt.Println("Part 2 - Unique Fresh ID Count:", part2(fresh_id_ranges, ingredient_ids))
 }
