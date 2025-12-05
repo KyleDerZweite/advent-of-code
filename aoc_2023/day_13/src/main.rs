@@ -1,18 +1,50 @@
-fn main() {
-    println!("Hello from day_13!");
+// Advent of Code 2023 - Day 13: Point of Incidence
+// https://adventofcode.com/2023/day/13
+
+use std::fs;
+
+fn parse_input(filename: &str) -> String {
+    fs::read_to_string(filename)
+        .expect("Failed to read input file")
+        .trim()
+        .to_string()
+}
+
+fn part1(_data: &str) -> i64 {
+    // TODO: Implement solution
+    0
+}
+
+fn part2(_data: &str) -> i64 {
+    // TODO: Implement solution
+    0
 }
 
 #[cfg(test)]
 mod tests {
+    use super::*;
+
     #[test]
-    fn test_solution_part1() {
-        // Example test case for part 1
-        // assert_eq!(solution_part1("input_example.txt"), expected_value);
+    fn test_part1() {
+        let _example_data = "";
+        // TODO: Add expected value
+        // assert_eq!(part1(example_data), expected);
     }
 
     #[test]
-    fn test_solution_part2() {
-        // Example test case for part 2
-        // assert_eq!(solution_part2("input_example.txt"), expected_value);
+    fn test_part2() {
+        let _example_data = "";
+        // TODO: Add expected value
+        // assert_eq!(part2(example_data), expected);
     }
+}
+
+fn main() {
+    let data = parse_input("input.txt");
+
+    let result1 = part1(&data);
+    println!("Part 1: {}", result1);
+
+    let result2 = part2(&data);
+    println!("Part 2: {}", result2);
 }

@@ -10,7 +10,7 @@ My solutions for [Advent of Code 2025](https://adventofcode.com/2025).
 | 02 | [Gift Shop](https://adventofcode.com/2025/day/2) | ⭐ | ⭐ | [solution.go](day_02/solution.go) |
 | 03 | [Lobby](https://adventofcode.com/2025/day/3) | ⭐ | ⭐ | [solution.go](day_03/solution.go) |
 | 04 | [Printing Department](https://adventofcode.com/2025/day/4) | ⭐ | ⭐ | [solution.go](day_04/solution.go) |
-| 05 | [Cafeteria](https://adventofcode.com/2025/day/5) | | | |
+| 05 | [Cafeteria](https://adventofcode.com/2025/day/5) ⭐ | ⭐ | [solution.go](day_05/solution.go) |
 | 06 | [Day 6](https://adventofcode.com/2025/day/6) | | | |
 | 07 | [Day 7](https://adventofcode.com/2025/day/7) | | | |
 | 08 | [Day 8](https://adventofcode.com/2025/day/8) | | | |

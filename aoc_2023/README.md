@@ -38,7 +38,9 @@ Each day's solution is in its own folder (`day_XX/`). To run a solution:
 
 ```bash
 cd day_01
-# Run with appropriate command for the language
+cargo run
+# Or with release optimizations:
+cargo run --release
 ```
 
 ## Structure
@@ -49,8 +51,67 @@ aoc_2023/
 ├── day_01/
 │   ├── 01.md        # Puzzle description (git-ignored)
 │   ├── input.txt    # Puzzle input (git-ignored)
-│   └── solution.*   # Solution file
+│   ├── Cargo.toml   # Rust project config
+│   └── src/
+│       └── main.rs  # Solution file
 └── ...
+```
+
+## Solution Template
+
+> **Note:** This template was automatically.
+
+```rust
+// Advent of Code 2023 - Day XX: Puzzle Name
+// https://adventofcode.com/2023/day/X
+
+use std::fs;
+
+fn parse_input(filename: &str) -> String {
+    fs::read_to_string(filename)
+        .expect("Failed to read input file")
+        .trim()
+        .to_string()
+}
+
+fn part1(_data: &str) -> i64 {
+    // TODO: Implement solution
+    0
+}
+
+fn part2(_data: &str) -> i64 {
+    // TODO: Implement solution
+    0
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_part1() {
+        let _example_data = "";
+        // TODO: Add expected value
+        // assert_eq!(part1(example_data), expected);
+    }
+
+    #[test]
+    fn test_part2() {
+        let _example_data = "";
+        // TODO: Add expected value
+        // assert_eq!(part2(example_data), expected);
+    }
+}
+
+fn main() {
+    let data = parse_input("input.txt");
+
+    let result1 = part1(&data);
+    println!("Part 1: {}", result1);
+
+    let result2 = part2(&data);
+    println!("Part 2: {}", result2);
+}
 ```
 
 ## Legal Notice
