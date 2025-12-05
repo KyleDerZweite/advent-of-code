@@ -6,17 +6,17 @@ My solutions for [Advent of Code](https://adventofcode.com/) - an annual coding 
 
 | Year | Language | Stars | Status |
 |------|----------|-------|--------|
-| [2025](aoc_2025/) | Go | 8/24 | 🔄 In Progress |
-| [2024](aoc_2024/) | Python | 8/50 | 🔄 In Progress |
-| [2023](aoc_2023/) | Rust | 0/50 | 🔄 Not Started |
-| [2022](aoc_2022/) | Zig | 0/50 | 🆕 Not Started |
-| [2021](aoc_2021/) | Elixir | 0/50 | 🆕 Not Started |
-| [2020](aoc_2020/) | Haskell | 0/50 | 🆕 Not Started |
-| [2019](aoc_2019/) | Dart | 0/50 | 🆕 Not Started |
-| [2018](aoc_2018/) | OCaml | 0/50 | 🆕 Not Started |
-| [2017](aoc_2017/) | Gleam | 0/50 | 🆕 Not Started |
-| [2016](aoc_2016/) | Kotlin | 0/50 | 🆕 Not Started |
-| [2015](aoc_2015/) | Julia | 0/50 | 🆕 Not Started |
+| [2025](aoc_2025/) | Go | ⭐ 8/24 | 🔄 In Progress |
+| [2024](aoc_2024/) | Python | ⭐ 8/50 | 🔄 In Progress |
+| [2023](aoc_2023/) | Rust | ☆ 0/50 | 🔄 Not Started |
+| [2022](aoc_2022/) | Zig | ☆ 0/50 | 🆕 Not Started |
+| [2021](aoc_2021/) | Elixir | ☆ 0/50 | 🆕 Not Started |
+| [2020](aoc_2020/) | Haskell | ☆ 0/50 | 🆕 Not Started |
+| [2019](aoc_2019/) | Dart | ☆ 0/50 | 🆕 Not Started |
+| [2018](aoc_2018/) | OCaml | ☆ 0/50 | 🆕 Not Started |
+| [2017](aoc_2017/) | Gleam | ☆ 0/50 | 🆕 Not Started |
+| [2016](aoc_2016/) | Kotlin | ☆ 0/50 | 🆕 Not Started |
+| [2015](aoc_2015/) | Julia | ☆ 0/50 | 🆕 Not Started |
 
 ## Repository Structure
 
