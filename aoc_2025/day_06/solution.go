@@ -16,14 +16,13 @@ func parse_input(input string) string {
 	return string(data)
 }
 
-func parse_string_to_matrix(input string) ([][]int, []string, [][]string) {
+func parse_string_to_matrix(input string) ([][]int, []string) {
 	// Trim leading/trailing whitespace so we don't get empty first/last lines
 	input = strings.TrimSpace(input)
 	lines := strings.Split(input, "\n")
 
 	var operators []string
 	columns := [][]int{}
-	padded_columns := [][]string{}
 
 	for i, ln := range lines {
 		ln = strings.TrimSpace(ln)
@@ -52,13 +51,6 @@ func parse_string_to_matrix(input string) ([][]int, []string, [][]string) {
 			columns = make([][]int, len(fields))
 		}
 
-		// Left pad fields for better alignment in output
-		padded_fields := make([]string, len(fields))
-		for j, f := range fields {
-			padded_fields[j] = fmt.Sprintf("%4s", f)
-		}
-		padded_columns = append(padded_columns, padded_fields)
-
 		for j, f := range fields {
 			if j >= len(columns) {
 				extra := make([][]int, j-len(columns)+1)
@@ -70,14 +62,14 @@ func parse_string_to_matrix(input string) ([][]int, []string, [][]string) {
 		}
 
 	}
-	return columns, operators, padded_columns
+	return columns, operators
 }
 
 func part1(input string) int {
 	// Implement the logic for part 1 of the puzzle here
 	grand_total := 0
 
-	columns, operators, _ := parse_string_to_matrix(input)
+	columns, operators := parse_string_to_matrix(input)
 
 	for i, column := range columns {
 		op := operators[i]
@@ -104,12 +96,59 @@ func part1(input string) int {
 func part2(input string) int {
 	grand_total := 0
 
-	_, _, columns := parse_string_to_matrix(input)
+	string_matrix := [][]string{}
+	lines := strings.Split(input, "\n")
+	for _, ln := range lines {
+		fields := strings.Split(ln, "")
+		string_matrix = append(string_matrix, fields)
+	}
 
-	for i, column := range columns {
-		for _, val := range column {
-			fmt.Printf("Column %d Value: %s Value-Length: %d\n", i, val, len(val))
+	operator_index := len(string_matrix) - 1
+	row_length := len(string_matrix[0])
+	column_length := len(string_matrix)
+
+	// fmt.Printf("Column Length: %d\n", column_length)
+	// fmt.Printf("Row Length: %d\n", row_length)
+	// fmt.Printf("Operator Index: %d\n", operator_index)
+
+	skip_next := false
+	values := []int{}
+	for i := row_length - 1; i >= 0; i-- {
+		if skip_next {
+			skip_next = false
+			continue
 		}
+
+		val_str := ""
+		for j := 0; j < column_length-1; j++ {
+			val_str += strings.TrimSpace(string_matrix[j][i])
+		}
+		val, _ := strconv.Atoi(val_str)
+		values = append(values, val)
+
+		op := string_matrix[operator_index][i]
+
+		if op != " " {
+			skip_next = true
+			// fmt.Printf("Operator %s Values: %v\n", op, values)
+			column_total := 0
+			switch op {
+			case "*":
+				if column_total == 0 {
+					column_total = 1
+				}
+				for _, val := range values {
+					column_total *= val
+				}
+			case "+":
+				for _, val := range values {
+					column_total += val
+				}
+			}
+			grand_total += column_total
+			values = []int{}
+		}
+
 	}
 
 	return grand_total
@@ -123,7 +162,7 @@ func test() {
 *   +   *   +  `
 
 	excpeted_part1 := 4277556
-	excpeted_part2 := 0
+	excpeted_part2 := 3263827
 
 	result_part1 := part1(example_input_str)
 	if result_part1 != excpeted_part1 {
@@ -146,5 +185,5 @@ func main() {
 
 	data := parse_input("input.txt")
 	fmt.Println("Part 1 - Grand Total:", part1(data))
-	// fmt.Println("Part 2 - Max Joltage Sum (12):", part2(data))
+	fmt.Println("Part 2 - Cephalopod Math Grand Total:", part2(data))
 }
