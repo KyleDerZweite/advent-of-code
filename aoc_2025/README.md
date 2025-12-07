@@ -12,7 +12,7 @@ My solutions for [Advent of Code 2025](https://adventofcode.com/2025).
 | 04 | [Printing Department](https://adventofcode.com/2025/day/4) | ⭐ | ⭐ | [solution.go](day_04/solution.go) |
 | 05 | [Cafeteria](https://adventofcode.com/2025/day/5) ⭐ | ⭐ | [solution.go](day_05/solution.go) |
 | 06 | [Trash Compactor](https://adventofcode.com/2025/day/6) | ⭐ | ⭐ | [solution.go](day_06/solution.go) |
-| 07 | [Day 7](https://adventofcode.com/2025/day/7) | | | |
+| 07 | [Laboratories](https://adventofcode.com/2025/day/7) | ⭐ | ⭐ | [solution.go](day_07/solution.go) |
 | 08 | [Day 8](https://adventofcode.com/2025/day/8) | | | |
 | 09 | [Day 9](https://adventofcode.com/2025/day/9) | | | |
 | 10 | [Day 10](https://adventofcode.com/2025/day/10) | | | |

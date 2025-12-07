@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 )
 
 func parse_input(input string) string {
@@ -15,22 +16,129 @@ func parse_input(input string) string {
 }
 
 func part1(input string) int {
-	// Implement the logic for part 1 of the puzzle here
-	joltage_sum := 0
-	return joltage_sum
+	lines := strings.Split(strings.TrimSpace(input), "\n")
+	if len(lines) == 0 {
+		return 0
+	}
+
+	startX, startY := -1, -1
+	for y, line := range lines {
+		if idx := strings.Index(line, "S"); idx != -1 {
+			startX, startY = idx, y
+			break
+		}
+	}
+	if startX == -1 {
+		return 0
+	}
+
+	splits := 0
+	beams := map[int]struct{}{startX: {}}
+
+	for y := startY + 1; y < len(lines); y++ {
+		line := lines[y]
+		next := make(map[int]struct{})
+
+		for x := range beams {
+			if x < 0 || x >= len(line) {
+				continue
+			}
+			if line[x] == '^' {
+				splits++
+				if x-1 >= 0 {
+					next[x-1] = struct{}{}
+				}
+				if x+1 < len(line) {
+					next[x+1] = struct{}{}
+				}
+			} else {
+				next[x] = struct{}{}
+			}
+		}
+
+		beams = next
+		if len(beams) == 0 {
+			break
+		}
+	}
+
+	return splits
 }
 
 func part2(input string) int {
-	joltage_sum := 0
-	return joltage_sum
+	lines := strings.Split(strings.TrimSpace(input), "\n")
+	if len(lines) == 0 {
+		return 0
+	}
+
+	startX, startY := -1, -1
+	for y, line := range lines {
+		if idx := strings.Index(line, "S"); idx != -1 {
+			startX, startY = idx, y
+			break
+		}
+	}
+	if startX == -1 {
+		return 0
+	}
+
+	timelines := 0
+	beams := map[int]int{startX: 1}
+
+	for y := startY + 1; y < len(lines); y++ {
+		line := lines[y]
+		next := make(map[int]int)
+		for x := range beams {
+			if x < 0 || x >= len(line) {
+				continue
+			}
+			if line[x] == '^' {
+				if x-1 >= 0 {
+					next[x-1] += beams[x]
+				}
+				if x+1 < len(line) {
+					next[x+1] += beams[x]
+				}
+			} else {
+				next[x] += beams[x]
+			}
+		}
+		// fmt.Println(len(next))
+		beams = next
+		if len(beams) == 0 {
+			break
+		}
+	}
+	// fmt.Println(beams)
+
+	for _, count := range beams {
+		timelines += count
+	}
+
+	return timelines
 }
 
 func test() {
 	// Test with example data from the puzzle
-	example_input_str := ""
+	example_input_str := `.......S.......
+...............
+.......^.......
+...............
+......^.^......
+...............
+.....^.^.^.....
+...............
+....^.^...^....
+...............
+...^.^...^.^...
+...............
+..^...^.....^..
+...............
+.^.^.^.^.^...^.
+...............`
 
-	excpeted_part1 := 0
-	excpeted_part2 := 0
+	excpeted_part1 := 21
+	excpeted_part2 := 40
 
 	result_part1 := part1(example_input_str)
 	if result_part1 != excpeted_part1 {
@@ -51,7 +159,7 @@ func main() {
 	// Run tests
 	test()
 
-	// data := parse_input("input.txt")
-	// fmt.Println("Part 1 - Max Joltage Sum (2):", part1(data))
-	// fmt.Println("Part 2 - Max Joltage Sum (12):", part2(data))
+	data := parse_input("input.txt")
+	fmt.Println("Part 1 - Total Splits:", part1(data))
+	fmt.Println("Part 2 - Total different timelines:", part2(data))
 }
