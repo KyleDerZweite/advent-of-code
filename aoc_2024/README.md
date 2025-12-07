@@ -11,8 +11,8 @@ My solutions for [Advent of Code 2024](https://adventofcode.com/2024).
 | 03 | [Mull It Over](https://adventofcode.com/2024/day/3) | ⭐ | ⭐ | [solution.py](day_03/solution.py) |
 | 04 | [Ceres Search](https://adventofcode.com/2024/day/4) | ⭐ | ⭐ | [solution.py](day_04/solution.py) |
 | 05 | [Print Queue](https://adventofcode.com/2024/day/5) | ⭐ | ⭐ | [solution.py](day_05/solution.py) |
-| 06 | [Guard Gallivant](https://adventofcode.com/2024/day/6) | | | [solution.py](day_06/solution.py) |
-| 07 | [Bridge Repair](https://adventofcode.com/2024/day/7) | | | [solution.py](day_07/solution.py) |
+| 06 | [Guard Gallivant](https://adventofcode.com/2024/day/6) | ⭐ | ⭐ | [solution.py](day_06/solution.py) |
+| 07 | [Bridge Repair](https://adventofcode.com/2024/day/7) | ⭐ | ⭐ | [solution.py](day_07/solution.py) |
 | 08 | [Resonant Collinearity](https://adventofcode.com/2024/day/8) | | | [solution.py](day_08/solution.py) |
 | 09 | [Disk Fragmenter](https://adventofcode.com/2024/day/9) | | | [solution.py](day_09/solution.py) |
 | 10 | [Hoof It](https://adventofcode.com/2024/day/10) | | | [solution.py](day_10/solution.py) |
