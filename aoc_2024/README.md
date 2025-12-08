@@ -13,7 +13,7 @@ My solutions for [Advent of Code 2024](https://adventofcode.com/2024).
 | 05 | [Print Queue](https://adventofcode.com/2024/day/5) | ⭐ | ⭐ | [solution.py](day_05/solution.py) |
 | 06 | [Guard Gallivant](https://adventofcode.com/2024/day/6) | ⭐ | ⭐ | [solution.py](day_06/solution.py) |
 | 07 | [Bridge Repair](https://adventofcode.com/2024/day/7) | ⭐ | ⭐ | [solution.py](day_07/solution.py) |
-| 08 | [Resonant Collinearity](https://adventofcode.com/2024/day/8) | | | [solution.py](day_08/solution.py) |
+| 08 | [Resonant Collinearity](https://adventofcode.com/2024/day/8) | ⭐ | ⭐ | [solution.py](day_08/solution.py) |
 | 09 | [Disk Fragmenter](https://adventofcode.com/2024/day/9) | | | [solution.py](day_09/solution.py) |
 | 10 | [Hoof It](https://adventofcode.com/2024/day/10) | | | [solution.py](day_10/solution.py) |
 | 11 | [Plutonian Pebbles](https://adventofcode.com/2024/day/11) | | | [solution.py](day_11/solution.py) |
