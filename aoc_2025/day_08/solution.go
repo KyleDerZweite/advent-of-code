@@ -63,24 +63,12 @@ func build_edges(pts []point) []edge {
 
 func part1(input string, connections int) int {
 	pts := parse_points(input)
-	n := len(pts)
-	if n == 0 {
-		return 0
-	}
-
 	edges := build_edges(pts)
-	sort.Slice(edges, func(i, j int) bool {
-		if edges[i].dist2 == edges[j].dist2 {
-			if edges[i].a == edges[j].a {
-				return edges[i].b < edges[j].b
-			}
-			return edges[i].a < edges[j].a
-		}
-		return edges[i].dist2 < edges[j].dist2
-	})
 
-	d := newDSU(n)
-	// Apply the first `connections` edges in sorted order; even if they don't change components, they still count as a connection.
+	// Sort by squared distance only; smallest first.
+	sort.Slice(edges, func(i, j int) bool { return edges[i].dist2 < edges[j].dist2 })
+
+	d := newDSU(len(pts))
 	limit := connections
 	if limit > len(edges) {
 		limit = len(edges)
@@ -91,14 +79,21 @@ func part1(input string, connections int) int {
 
 	sizes := d.componentSizes()
 	sort.Slice(sizes, func(i, j int) bool { return sizes[i] > sizes[j] })
-	if len(sizes) < 3 {
-		return 0
-	}
 	return sizes[0] * sizes[1] * sizes[2]
 }
 
 func part2(input string, connections int) int {
-	return 0
+	_ = connections // Ignore connections for part 2 in this example, limit = len(edges)
+	pts := parse_points(input)
+	edges := build_edges(pts)
+
+	fmt.Println("Total edges:", len(edges))
+	for i := len(edges) - 3; i < len(edges); i++ {
+		fmt.Printf("Edge %d: points (%d, %d) dist2=%d\n", i, edges[i].a, edges[i].b, edges[i].dist2)
+		fmt.Printf("  Point %d: (%d, %d, %d)\n", edges[i].a, pts[edges[i].a].x, pts[edges[i].a].y, pts[edges[i].a].z)
+	}
+
+	return pts[edges[len(edges)-1].a].x * pts[edges[len(edges)-2].a].x
 }
 
 func test() {
@@ -129,6 +124,7 @@ func test() {
 	example_shortest_connections := 10
 
 	excpeted_part1 := 40
+	excpeted_part2 := 25272
 
 	result_part1 := part1(example_input_str, example_shortest_connections)
 	if result_part1 != excpeted_part1 {
@@ -137,8 +133,12 @@ func test() {
 		fmt.Println("Part 1 passed")
 	}
 
-	// No official example result for part 2 (challenge text redacted). Here we just exercise the API.
-	_ = part2(example_input_str, example_shortest_connections)
+	result_part2 := part2(example_input_str, example_shortest_connections)
+	if result_part2 != excpeted_part2 {
+		fmt.Printf("Part 2 failed: got %d, expected %d, difference %d\n", result_part2, excpeted_part2, excpeted_part2-result_part2)
+	} else {
+		fmt.Println("Part 2 passed")
+	}
 }
 
 func main() {
@@ -146,7 +146,7 @@ func main() {
 	test()
 
 	// Example usage with real input (adjust connections as needed, e.g., 1000 per puzzle spec)
-	// data := parse_input("input.txt")
-	// fmt.Println("Part 1 - Product of top 3 sizes:", part1(data, 1000))
+	data := parse_input("input.txt")
+	fmt.Println("Part 1 - Product of top 3 sizes:", part1(data, 1000))
 	// fmt.Println("Part 2 - Product of top 3 sizes:", part2(data, 1000))
 }
