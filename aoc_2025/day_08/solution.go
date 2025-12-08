@@ -86,14 +86,21 @@ func part2(input string, connections int) int {
 	_ = connections // Ignore connections for part 2 in this example, limit = len(edges)
 	pts := parse_points(input)
 	edges := build_edges(pts)
+	sort.Slice(edges, func(i, j int) bool { return edges[i].dist2 < edges[j].dist2 })
 
-	fmt.Println("Total edges:", len(edges))
-	for i := len(edges) - 3; i < len(edges); i++ {
-		fmt.Printf("Edge %d: points (%d, %d) dist2=%d\n", i, edges[i].a, edges[i].b, edges[i].dist2)
-		fmt.Printf("  Point %d: (%d, %d, %d)\n", edges[i].a, pts[edges[i].a].x, pts[edges[i].a].y, pts[edges[i].a].z)
+	d := newDSU(len(pts))
+	components := len(pts)
+	for _, e := range edges {
+		if d.find(e.a) != d.find(e.b) {
+			d.union(e.a, e.b) // union happened
+			components--
+			if components == 1 {
+				// e is the edge that connected everything
+				return pts[e.a].x * pts[e.b].x
+			}
+		}
 	}
-
-	return pts[edges[len(edges)-1].a].x * pts[edges[len(edges)-2].a].x
+	return 0
 }
 
 func test() {
@@ -148,5 +155,5 @@ func main() {
 	// Example usage with real input (adjust connections as needed, e.g., 1000 per puzzle spec)
 	data := parse_input("input.txt")
 	fmt.Println("Part 1 - Product of top 3 sizes:", part1(data, 1000))
-	// fmt.Println("Part 2 - Product of top 3 sizes:", part2(data, 1000))
+	fmt.Println("Part 2 - Product of top 3 sizes:", part2(data, 1000))
 }
