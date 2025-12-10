@@ -15,7 +15,7 @@ My solutions for [Advent of Code 2025](https://adventofcode.com/2025).
 | 07 | [Laboratories](https://adventofcode.com/2025/day/7) | ⭐ | ⭐ | [solution.go](day_07/solution.go) |
 | 08 | [Playground](https://adventofcode.com/2025/day/8) | ⭐ | ⭐ | [solution.go](day_08/solution.go) |
 | 09 | [Movie Theater](https://adventofcode.com/2025/day/9) ⭐ | ⭐ | [solution.go](day_09/solution.go) |
-| 10 | [Day 10](https://adventofcode.com/2025/day/10) | | | |
+| 10 | [Factory](https://adventofcode.com/2025/day/10) | | | |
 | 11 | [Day 11](https://adventofcode.com/2025/day/11) | | | |
 | 12 | [Day 12](https://adventofcode.com/2025/day/12) | | | |
 
