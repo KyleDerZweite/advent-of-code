@@ -102,39 +102,52 @@ func parse_machines(input string) []machine {
 	return machines
 }
 
-func recursive_button_press(m *machine, presses []int, depth int, max_depth int, min_presses *int) {
-	if depth > max_depth {
-		return
-	}
+func recursive_solve(m *machine, depth int, max_depth int) bool {
 	if m.is_correct() {
-		if *min_presses == -1 || depth < *min_presses {
-			*min_presses += depth
-		}
-		return
+		return true
+	}
+	if depth >= max_depth {
+		return false
 	}
 
 	for i := range m.buttons {
 		m.press_button(i)
-		recursive_button_press(m, append(presses, i), depth+1, max_depth, min_presses)
-		m.reset_state()
-		for _, p := range presses {
-			m.press_button(p)
+		if recursive_solve(m, depth+1, max_depth) {
+			return true
+		}
+		m.press_button(i) // undo
+	}
+	return false
+}
+
+func solve_machine_simple(m *machine) int {
+	m.init_state()
+
+	if m.is_correct() {
+		return 0
+	}
+
+	for max_depth := 1; max_depth <= 15; max_depth++ {
+		m.init_state() // Reset before each attempt
+		if recursive_solve(m, 0, max_depth) {
+			return max_depth
 		}
 	}
+
+	return -1
 }
 
 func part1(input string) int {
 	machines := parse_machines(input)
 
 	min_button_presses := 0
-	combo_length := 0
-	_ = combo_length
 
 	for i := range machines {
 		m := &machines[i]
-		m.init_state()
-
-		recursive_button_press(m, []int{}, 0, 10, &min_button_presses)
+		result := solve_machine_simple(m)
+		if result != -1 {
+			min_button_presses += result
+		}
 	}
 
 	return min_button_presses
@@ -176,7 +189,7 @@ func main() {
 	// Run tests
 	test()
 
-	// data := parse_input("input.txt")
-	// fmt.Println("Part 1 - fewest button presses:", part1(data))
+	data := parse_input("input.txt")
+	fmt.Println("Part 1 - fewest button presses:", part1(data))
 	// fmt.Println("Part 2 - Max Joltage Sum (12):", part2(data))
 }
