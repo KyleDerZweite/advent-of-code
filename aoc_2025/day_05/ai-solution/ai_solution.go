@@ -234,7 +234,7 @@ func solve(ranges []Range, ids []int64) (int, int64) {
 }
 
 func test() {
-	exampleInput := []byte(`3-5
+	example_input := []byte(`3-5
 10-14
 16-20
 12-18
@@ -246,22 +246,22 @@ func test() {
 17
 32`)
 
-	ranges, ids := parseBytes(exampleInput)
+	ranges, ids := parseBytes(example_input)
 
-	expectedPart1 := 3
-	var expectedPart2 int64 = 14
+	expected_part1 := 3
+	var expected_part2 int64 = 14
 
-	resultPart1 := part1Optimized(ranges, ids)
-	resultPart2 := part2Optimized(ranges)
+	result_part1 := part1Optimized(ranges, ids)
+	result_part2 := part2Optimized(ranges)
 
-	if resultPart1 != expectedPart1 {
-		fmt.Printf("Part 1 failed: got %d, expected %d\n", resultPart1, expectedPart1)
+	if result_part1 != expected_part1 {
+		fmt.Printf("Part 1 failed: got %d, expected %d\n", result_part1, expected_part1)
 	} else {
 		fmt.Println("Part 1 passed")
 	}
 
-	if resultPart2 != expectedPart2 {
-		fmt.Printf("Part 2 failed: got %d, expected %d\n", resultPart2, expectedPart2)
+	if result_part2 != expected_part2 {
+		fmt.Printf("Part 2 failed: got %d, expected %d\n", result_part2, expected_part2)
 	} else {
 		fmt.Println("Part 2 passed")
 	}

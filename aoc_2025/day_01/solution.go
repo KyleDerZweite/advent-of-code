@@ -54,23 +54,23 @@ func part2(start int, rotation []string) int {
 		if direction == 'L' {
 			// Going left: we hit 0 at step=dial, dial+100, dial+200, etc.
 			// So we hit 0 if steps >= dial (when dial > 0), or steps >= 100 (when dial == 0)
-			distTo0 := dial
-			if distTo0 == 0 {
-				distTo0 = 100 // if at 0, next 0 is 100 steps away going left
+			dist_to_0 := dial
+			if dist_to_0 == 0 {
+				dist_to_0 = 100 // if at 0, next 0 is 100 steps away going left
 			}
-			if steps >= distTo0 {
-				password += 1 + (steps-distTo0)/100
+			if steps >= dist_to_0 {
+				password += 1 + (steps-dist_to_0)/100
 			}
 			dial = ((dial-steps)%100 + 100) % 100
 		} else if direction == 'R' {
 			// Going right: we hit 0 at step=(100-dial), (200-dial), etc.
 			// So we hit 0 if steps >= (100-dial) (when dial > 0), or steps >= 100 (when dial == 0)
-			distTo0 := (100 - dial) % 100
-			if distTo0 == 0 {
-				distTo0 = 100 // if at 0, next 0 is 100 steps away going right
+			dist_to_0 := (100 - dial) % 100
+			if dist_to_0 == 0 {
+				dist_to_0 = 100 // if at 0, next 0 is 100 steps away going right
 			}
-			if steps >= distTo0 {
-				password += 1 + (steps-distTo0)/100
+			if steps >= dist_to_0 {
+				password += 1 + (steps-dist_to_0)/100
 			}
 			dial = (dial + steps) % 100
 		}

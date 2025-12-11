@@ -195,7 +195,7 @@ func solve(redTiles []point, segments []segment) (int, int) {
 
 func main() {
 	// Test with example
-	exampleData := []byte(`7,1
+	example_data := []byte(`7,1
 11,1
 11,7
 9,7
@@ -204,11 +204,11 @@ func main() {
 2,3
 7,3`)
 
-	redTiles := parseBytes(exampleData)
-	segments := buildSegments(redTiles)
+	red_tiles := parseBytes(example_data)
+	segments := buildSegments(red_tiles)
 
-	p1 := part1Optimized(redTiles)
-	p2 := part2Optimized(redTiles, segments)
+	p1 := part1Optimized(red_tiles)
+	p2 := part2Optimized(red_tiles, segments)
 
 	if p1 != 50 {
 		fmt.Printf("Part 1 failed: got %d, expected 50\n", p1)
@@ -224,10 +224,10 @@ func main() {
 
 	// Run on actual input
 	data := parseInput("../input.txt")
-	redTiles = parseBytes(data)
-	segments = buildSegments(redTiles)
+	red_tiles = parseBytes(data)
+	segments = buildSegments(red_tiles)
 
-	p1, p2 = solve(redTiles, segments)
+	p1, p2 = solve(red_tiles, segments)
 	fmt.Println("Part 1 - Max Tiles Between Points:", p1)
 	fmt.Println("Part 2 - Max Red and Green Tiles:", p2)
 }

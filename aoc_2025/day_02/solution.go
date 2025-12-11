@@ -63,27 +63,27 @@ func part2(product_id_ranges string) int {
 		id_str := strconv.Itoa(id)
 		len_digits := len(id_str)
 
-		isInvalid := false
+		is_invalid := false
 		// Check for each possible pattern length from 1 to len_digits/2
-		for patternLen := 1; patternLen <= len_digits/2; patternLen++ {
-			if len_digits%patternLen == 0 {
+		for pattern_len := 1; pattern_len <= len_digits/2; pattern_len++ {
+			if len_digits%pattern_len == 0 {
 				// Check if id_str is made of the pattern repeated
-				pattern := id_str[:patternLen]
-				allMatch := true
-				for i := patternLen; i < len_digits; i += patternLen {
-					if id_str[i:i+patternLen] != pattern {
-						allMatch = false
+				pattern := id_str[:pattern_len]
+				all_match := true
+				for i := pattern_len; i < len_digits; i += pattern_len {
+					if id_str[i:i+pattern_len] != pattern {
+						all_match = false
 						break
 					}
 				}
-				if allMatch {
-					isInvalid = true
+				if all_match {
+					is_invalid = true
 					break
 				}
 			}
 		}
 
-		if isInvalid {
+		if is_invalid {
 			invalid_ids_sum += id
 		}
 	}

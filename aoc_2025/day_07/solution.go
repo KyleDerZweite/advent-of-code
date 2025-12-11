@@ -21,21 +21,21 @@ func part1(input string) int {
 		return 0
 	}
 
-	startX, startY := -1, -1
+	start_x, start_y := -1, -1
 	for y, line := range lines {
 		if idx := strings.Index(line, "S"); idx != -1 {
-			startX, startY = idx, y
+			start_x, start_y = idx, y
 			break
 		}
 	}
-	if startX == -1 {
+	if start_x == -1 {
 		return 0
 	}
 
 	splits := 0
-	beams := map[int]struct{}{startX: {}}
+	beams := map[int]struct{}{start_x: {}}
 
-	for y := startY + 1; y < len(lines); y++ {
+	for y := start_y + 1; y < len(lines); y++ {
 		line := lines[y]
 		next := make(map[int]struct{})
 
@@ -71,21 +71,21 @@ func part2(input string) int {
 		return 0
 	}
 
-	startX, startY := -1, -1
+	start_x, start_y := -1, -1
 	for y, line := range lines {
 		if idx := strings.Index(line, "S"); idx != -1 {
-			startX, startY = idx, y
+			start_x, start_y = idx, y
 			break
 		}
 	}
-	if startX == -1 {
+	if start_x == -1 {
 		return 0
 	}
 
 	timelines := 0
-	beams := map[int]int{startX: 1}
+	beams := map[int]int{start_x: 1}
 
-	for y := startY + 1; y < len(lines); y++ {
+	for y := start_y + 1; y < len(lines); y++ {
 		line := lines[y]
 		next := make(map[int]int)
 		for x := range beams {

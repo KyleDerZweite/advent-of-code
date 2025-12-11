@@ -33,14 +33,14 @@ func parse_string_to_matrix(input string) ([][]int, []string) {
 		fields := strings.Fields(ln)
 		// If this is the last line and any field is not a number, treat it as operators
 		if i == len(lines)-1 {
-			isOp := false
+			is_op := false
 			for _, f := range fields {
 				if _, err := strconv.Atoi(f); err != nil {
-					isOp = true
+					is_op = true
 					break
 				}
 			}
-			if isOp {
+			if is_op {
 				operators = fields
 				continue
 			}
