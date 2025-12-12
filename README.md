@@ -6,7 +6,7 @@ My solutions for [Advent of Code](https://adventofcode.com/) - an annual coding 
 
 | Year | Language | Stars | Status |
 |------|----------|-------|--------|
-| [2025](aoc_2025/) | Go | ⭐ 22/24 | 🔄 In Progress |
+| [2025](aoc_2025/) | Go | ⭐ 24/24 | ✅ Complete |
 | [2024](aoc_2024/) | Python | ⭐ 16/50 | 🔄 In Progress |
 | [2023](aoc_2023/) | Rust | ☆ 0/50 | 🔄 Not Started |
 | [2022](aoc_2022/) | Zig | ☆ 0/50 | 🆕 Not Started |
@@ -17,6 +17,9 @@ My solutions for [Advent of Code](https://adventofcode.com/) - an annual coding 
 | [2017](aoc_2017/) | Gleam | ☆ 0/50 | 🆕 Not Started |
 | [2016](aoc_2016/) | Kotlin | ☆ 0/50 | 🆕 Not Started |
 | [2015](aoc_2015/) | Julia | ☆ 0/50 | 🆕 Not Started |
+
+> **Note on 2025:** Day 11 required AI assistance for bug fixing, and Day 12 was solved with AI help.
+> Still learning Go — see the [aoc_2025 README](aoc_2025/README.md) for details.
 
 ## Repository Structure
 
