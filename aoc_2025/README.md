@@ -57,18 +57,23 @@ _________||______ ______________________________   10 **
 
 ## Running Solutions
 
-Each day's solution is in its own folder (`day_XX/`). To run a solution:
+Each day's solution is in its own folder (`day_XX/`). From this year's directory, run:
 
 ```bash
 cd day_01
-go run main.go
+go run solution.go
 ```
 
 Or from the repo root:
 
 ```bash
-go run ./aoc_2025/day_01
+cd aoc_2025/day_01
+go run solution.go
 ```
+
+Place your personal `input.txt` in the day directory before running the solution.
+The program reads the input relative to the current directory. Running the file
+directly does not require a Go module.
 
 ## Structure
 

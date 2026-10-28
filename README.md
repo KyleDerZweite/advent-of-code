@@ -50,6 +50,23 @@ Each year folder contains its own README with detailed progress and instructions
 
 This repository includes [`fetch_aoc.py`](fetch_aoc.py), a helper script to fetch puzzle descriptions for personal use.
 
+Use [uv](https://docs.astral.sh/uv/getting-started/installation/) 0.11.16 for
+the helper. The project selects Python 3.14 through `.python-version`; uv downloads
+it if needed. From the repository root, install the locked dependencies and
+preview a fetch without changing files or making requests:
+
+```bash
+uv sync --locked
+uv run --locked fetch_aoc.py --help
+uv run --locked fetch_aoc.py --years 2025 --days 1 --dry-run
+```
+
+Remove `--dry-run` to fetch descriptions. Existing descriptions are skipped unless
+you pass `--force`. The helper's dependencies live in `pyproject.toml` and
+`uv.lock`, separate from the language-specific solution projects. Update a
+dependency with `uv lock --upgrade-package requests`, then verify with
+`uv sync --locked` and the commands above. Dependabot checks the uv project weekly.
+
 > ⚠️ **Important**: This tool is for **personal use only** to help organize your own solutions.
 > Please be respectful of [adventofcode.com](https://adventofcode.com) servers.
 > Puzzle content is © Advent of Code / Eric Wastl and is git-ignored.

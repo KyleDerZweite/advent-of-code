@@ -6,9 +6,9 @@ Creates directory structures and downloads puzzle descriptions (Part 1 only)
 for specified years and days from adventofcode.com.
 
 Usage:
-    python fetch_aoc.py --years 2015-2025
-    python fetch_aoc.py --years 2024,2025 --days 1-10
-    python fetch_aoc.py --years 2023 --force --delay 3
+    uv run --locked fetch_aoc.py --years 2015-2025
+    uv run --locked fetch_aoc.py --years 2024,2025 --days 1-10
+    uv run --locked fetch_aoc.py --years 2023 --force --delay 3
 
 ⚠️  IMPORTANT DISCLAIMER:
     This script is intended for PERSONAL USE ONLY to help organize your own
@@ -38,7 +38,8 @@ try:
     import html2text
 except ImportError as e:
     print(f"Missing dependency: {e}")
-    print("Install with: pip install requests beautifulsoup4 html2text")
+    print("From the repository root, run: uv sync --locked")
+    print("Then use: uv run --locked fetch_aoc.py --help")
     sys.exit(1)
 
 
@@ -279,10 +280,10 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  python fetch_aoc.py --years 2015-2025
-  python fetch_aoc.py --years 2024,2025 --days 1-10
-  python fetch_aoc.py --years 2023 --force --delay 3
-  python fetch_aoc.py --years 2015-2025 --dry-run
+  uv run --locked fetch_aoc.py --years 2015-2025
+  uv run --locked fetch_aoc.py --years 2024,2025 --days 1-10
+  uv run --locked fetch_aoc.py --years 2023 --force --delay 3
+  uv run --locked fetch_aoc.py --years 2015-2025 --dry-run
         """,
     )
     parser.add_argument(
