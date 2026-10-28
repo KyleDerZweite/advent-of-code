@@ -1,0 +1,14 @@
+[project]
+name = "advent-of-code-tools"
+version = "0.1.0"
+description = "Local tooling for fetching Advent of Code puzzle descriptions"
+requires-python = ">=3.11"
+dependencies = [
+    "beautifulsoup4>=4.15.0",
+    "html2text>=2025.4.15",
+    "requests>=2.34.2",
+]
+
+[tool.uv]
+package = false
+required-version = "==0.11.16"
